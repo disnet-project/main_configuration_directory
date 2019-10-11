@@ -1,4 +1,4 @@
-# main_configuration_directory
+# DISNET configuration, installation, up and run (main_configuration_directory)
 In this directory you will find the `DISNET` configuration, which allows you to create all the Web services that make up the platform. 
 
 The directory is ready to be executed thanks to the use of docker containers.
@@ -46,3 +46,16 @@ The directory is composed of the following essential elements:
   7. `mayoclinic_text_extraction_rest` -> [mayoclinic_text_extraction_api_rest](https://github.com/disnet-project/mayoclinic_text_extraction_rest)
   
   It is **important** to remember that you must compile and generate the `.jar` file of each of the previous Web services and copy them into their corresponding directories. Each `.jar` generated must be generically renamed as `app.jar` and then copied.
+
+# DISNET `up` and `run`
+Using the docker-compose (console) command `up` starts the process that will install `DISNET`. Make sure you are in the `disnet` root directory.
+
+`$ docker-compose up`
+
+`DISNET` will automatically mine Wikipedia every 1st and 15th of every month.
+
+If you want to terminate `DISNET`, you need to use the command docker-compose down.
+
+`$ docker-compose down`
+
+**For more docker-compose functions see your documentation** https://docs.docker.com/compose/.
