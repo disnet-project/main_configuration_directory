@@ -44,3 +44,4 @@ The directory is composed of the following essential elements:
   6. `pubmed_text_extraction_rest` -> pubmed_text_extraction-api_rest
   7. `mayoclinic_text_extraction_rest` -> mayoclinic_text_extraction_api_rest
   
+  It is **important** to remember that you must compile and generate the `.jar` file of each of the previous Web services and copy them into their corresponding directories. Each `.jar` generated must be generically renamed as `app.jar` and then copied.
