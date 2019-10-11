@@ -16,7 +16,7 @@ The directory is ready to be executed thanks to the use of docker containers.
 4. The necessary Metamap files are the following and must be downloaded from its official page and copied into the internal directory (dockerfile -> metamap2016v2 -> zip) with the extension `.bz2` as shown below:
   
   * **a)** `public_mm_linux_main_2016v2.tar.bz2` (https://metamap.nlm.nih.gov/MainDownload.shtml)
-  * **b)** `public_mm_wsd_2014.tar.bz2` (downloaded together with a)) 
+  * **b)** `public_mm_wsd_2014.tar.bz2` (downloaded together with **a)**) 
   * **c)** `public_mm_linux_javaapi_2016v2.tar.bz2` (https://metamap.nlm.nih.gov/JavaApi.shtml)
 
 5. Knowledge about `Java` and `Spring Boot` framework, since all Web services are developed with it.
