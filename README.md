@@ -29,7 +29,8 @@ The directory is composed of the following essential elements:
   This file is the main one, it organises the execution of each one of the Web services, it links them to each other and it is where their dependencies are specified.  
 
 ## 2) .env file
-  This file contains the global system configuration variables. These are used by each of the docker containers and by the `docker-compose.yml` file itself.
+  This file contains the global system configuration variables. These are used by each of the docker containers and by the `docker-compose.yml` file itself. It is necessary to remove the parentheses once downloaded: `(.)env` to `.env`.
+
 
 ## 3) dockerfile directory
   This directory contains the .jar of each of the Web applications that make up each Web service. It is necessary to have previously compiled and generated the .jar of each one of the Web applications that compose `DISNET`.
