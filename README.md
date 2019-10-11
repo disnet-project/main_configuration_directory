@@ -1,2 +1,4 @@
 # main_configuration_directory
-En este directorio se encuentra la configuración de DISNET, la cual permite levantar todos los servicios Web que componen la plataforma.   El directorio se encuentra listo para ser ejecutado gracias a que se usan contenedores docker.
+In this directory you will find the DISNET configuration, which allows you to create all the Web services that make up the platform. 
+
+The directory is ready to be executed thanks to the use of docker containers.
