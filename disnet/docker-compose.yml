@@ -1,0 +1,209 @@
+# DISNET PROJECT 
+
+version: '2'
+
+services:
+ 
+  disnet-tvp_api_rest:
+    image: disnet-tvp_api_rest
+    build: ./dockerfile/term_validation_procedure-api_rest/.
+    restart: unless-stopped
+    container_name: disnet-tvp_api_rest-container
+    ports:
+      - "10602:8080"
+    depends_on:
+      - "disnet-authorization_api_rest"
+    env_file: .env
+    networks:
+      disnet-network:
+        ipv4_address: 172.28.0.5
+    volumes:
+      - ./dockerfile/term_validation_procedure-api_rest/app.jar:/app.jar
+      - ./volumes/external/tvp:/tmp/tvp
+      - /etc/localtime:/etc/localtime:ro
+
+  disnet-metamap_api_rest:
+    image: disnet-metamap_api_rest
+    build: ./dockerfile/metamap-api_rest/.
+    restart: unless-stopped
+    container_name: disnet-metamap_api_rest-container
+    ports:
+      - "10603:8080"
+    #environment:
+    #  METAMAP_HOST: 172.28.0.2
+    #  METAMAP_PORT: 8066
+    depends_on:
+      - "disnet-metamap2016v2"
+    env_file: .env
+    networks:
+      disnet-network:
+        ipv4_address: 172.28.0.3
+    volumes:
+      - ./dockerfile/metamap-api_rest/app.jar:/app.jar
+      - ./volumes/external/metamap:/tmp/mm
+      - /etc/localtime:/etc/localtime:ro
+
+  disnet-metamap2016v2:
+    image: disnet-metamap2016v2
+    build: ./dockerfile/metamap2016v2/.
+    restart: unless-stopped
+    container_name: disnet-metamap2016v2-container
+    expose:
+      - "8066"
+    environment:
+      ACCEPTED_HOSTS: "['127.0.0.1','172.28.0.3']"
+      METAMAP_ERROR_CODE: 02
+    networks:
+      disnet-network:
+        ipv4_address: 172.28.0.2
+      
+
+  disnet-get_disease_list_api_rest:
+    image: disnet-get_disease_list_api_rest
+    build: ./dockerfile/get_disease_list-api_rest/.
+    restart: unless-stopped
+    container_name: disnet-get_disease_list_api_rest-container
+    ports:
+      - "10606:8080"
+    links:
+      - "disnet-disease_list_available_database"
+    depends_on:
+      - "disnet-authorization_api_rest"
+    env_file: .env
+    networks:
+      disnet-network:
+        ipv4_address: 172.28.0.7
+    volumes: 
+      - ./dockerfile/get_disease_list-api_rest/app.jar:/app.jar
+      - ./volumes/external/disease_albums:/tmp/extraction_history
+      - /etc/localtime:/etc/localtime:ro
+
+  disnet-data_storage_and_validation_procedure_api_rest:
+    image: disnet-data_storage_and_validation_procedure_api_rest
+    build: ./dockerfile/data_storage_and_validation_procedure-api_rest/.
+    restart: unless-stopped
+    container_name: disnet-data_storage_and_validation_procedure_api_rest-container
+    ports:
+      - "10607:8080"
+    links:
+      - "disnet-diseases_database"
+    depends_on:
+      - "disnet-authorization_api_rest"
+      - "disnet-get_disease_list_api_rest"
+      - "disnet-tvp_api_rest"
+      - "disnet-wikipedia_text_extraction_api_rest"
+      - "disnet-pubmed_text_extraction_api_rest"
+      - "disnet-mayoclinic_text_extraction_api_rest"
+    env_file: .env
+    networks:
+      disnet-network:
+        ipv4_address: 172.28.0.9
+    volumes:
+      - ./dockerfile/data_storage_and_validation_procedure-api_rest/app.jar:/app.jar
+      - ./volumes/external/metamap:/tmp/mm
+      - ./volumes/external/tvp:/tmp/tvp
+      - ./volumes/external/conf:/conf/wikipedia/extraction
+      - ./volumes/external/wikipedia_text_extraction:/tmp/wikipedia
+      - ./volumes/external/pubmed_text_extraction:/tmp/pubmed
+      - ./volumes/external/mayoclinic_text_extraction:/tmp/mayoclinic
+      - ./volumes/external/statistics:/tmp/statistics
+      - ./volumes/external/analysis:/tmp/analysis
+      - ./volumes/external/analysis_2:/tmp/analysis_2
+      - /etc/localtime:/etc/localtime:ro
+
+  disnet-wikipedia_text_extraction_api_rest:
+    image: disnet-wikipedia_text_extraction_api_rest
+    build: ./dockerfile/wikipedia_text_extraction-api_rest/.
+    restart: unless-stopped
+    container_name: disnet-wikipedia_text_extraction_api_rest-container
+    ports:
+      - "10608:8080"
+    env_file: .env
+    networks:
+      disnet-network:
+        ipv4_address: 172.28.0.10
+    volumes:
+      - ./dockerfile/wikipedia_text_extraction-api_rest/app.jar:/app.jar
+      - ./volumes/external/wikipedia_text_extraction:/tmp/retrieval
+      - ./volumes/external/wikipedia_text_extraction/approaches/all_title_pages:/tmp/enwiki_all_title_pages
+      - /etc/localtime:/etc/localtime:ro
+
+  disnet-pubmed_text_extraction_api_rest:
+    image: disnet-pubmed_text_extraction_api_rest
+    build: ./dockerfile/pubmed_text_extraction-api_rest/.
+    restart: unless-stopped
+    container_name: disnet-pubmed_text_extraction_api_rest-container
+    ports:
+      - "10609:8080"
+    env_file: .env
+    networks:
+      disnet-network:
+        ipv4_address: 172.28.0.11
+    volumes:
+      - ./dockerfile/pubmed_text_extraction-api_rest/app.jar:/app.jar
+      - ./volumes/external/pubmed_text_extraction:/tmp/retrieval
+      - /etc/localtime:/etc/localtime:ro
+
+
+  disnet-mayoclinic_text_extraction_api_rest:
+    image: disnet-mayoclinic_text_extraction_api_rest
+    build: ./dockerfile/mayoclinic_text_extraction_api_rest/.
+    restart: unless-stopped
+    container_name: disnet-mayoclinic_text_extraction_api_rest-container
+    ports:
+      - "10610:8080"
+    env_file: .env
+    networks:
+      disnet-network:
+        ipv4_address: 172.28.0.13
+    volumes:
+      - ./dockerfile/mayoclinic_text_extraction_api_rest/app.jar:/app.jar
+      - ./volumes/external/mayoclinic_text_extraction:/tmp/retrieval
+
+
+
+  disnet-diseases_database:
+    image: 'mysql:5.7'
+    restart: unless-stopped
+    container_name: disnet-diseases_database-container
+    ports:
+      - "30602:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${ROOT_PASSWORD}"
+      MYSQL_DATABASE : "${EDSSS_DB_NAME}"
+      MYSQL_USER: "${EDSSS_DB_MYSQL_USER}"
+      MYSQL_PASSWORD: "${EDSSS_DB_MYSQL_PASSWORD}"
+    networks:
+      disnet-network:
+        ipv4_address: 172.28.0.15
+    volumes:
+      - ./volumes/mysql/disnet-diseases_database/var/lib/mysql:/var/lib/mysql
+      - ./volumes/mysql/disnet-diseases_database/etc/mysql/my.cnf:/etc/mysql/my.cnf
+      - /etc/localtime:/etc/localtime:ro
+
+  disnet-disease_list_available_database:
+    image: 'mysql:5.7'
+    restart: unless-stopped
+    container_name: disnet-disease_list_available_database-container
+    ports:
+      - "30603:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "${ROOT_PASSWORD}"
+      MYSQL_DATABASE : "${AD_DB_NAME}"
+      MYSQL_USER: "${AD_DB_MYSQL_USER}"
+      MYSQL_PASSWORD: "${AD_DB_MYSQL_PASSWORD}"
+    networks:
+      disnet-network:
+        ipv4_address: 172.28.0.16
+    volumes:
+      - ./volumes/mysql/disnet-disease_list_available_database/var/lib/mysql:/var/lib/mysql
+      - ./volumes/mysql/disnet-disease_list_available_database/etc/mysql/my.cnf:/etc/mysql/my.cnf
+      - /etc/localtime:/etc/localtime:ro
+
+networks:
+  disnet-network:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.28.0.0/16
+         gateway: 172.28.0.1
