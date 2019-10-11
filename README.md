@@ -37,12 +37,12 @@ The directory is composed of the following essential elements:
 
   The list of Web services and their relationship with their directories contained in the dockerfile directory is as follows:
   
-  1. `dsvp-rest` -> data_storage_and_validation_procedure-api_rest
-  2. `get_diseases_list_rest` -> get_disease_list-api_rest
-  3. `metamap_rest` -> metamap-api_rest
-  4. `tvp_rest` -> term_validation_procedure-api_rest
-  5. `wikipedia_text_extraction_rest` -> wikipedia_text_extraction-api_rest
-  6. `pubmed_text_extraction_rest` -> pubmed_text_extraction-api_rest
-  7. `mayoclinic_text_extraction_rest` -> mayoclinic_text_extraction_api_rest
+  1. `dsvp-rest` -> [data_storage_and_validation_procedure-api_rest](https://github.com/disnet-project/dsvp-rest)    
+  2. `get_diseases_list_rest` -> [get_disease_list-api_rest](https://github.com/disnet-project/get_diseases_list_rest)
+  3. `metamap_rest` -> [metamap-api_rest](https://github.com/disnet-project/metamap_rest)
+  4. `tvp_rest` -> [term_validation_procedure-api_rest](https://github.com/disnet-project/tvp_rest)
+  5. `wikipedia_text_extraction_rest` -> [wikipedia_text_extraction-api_rest](https://github.com/disnet-project/wikipedia_text_extraction_rest)
+  6. `pubmed_text_extraction_rest` -> [pubmed_text_extraction-api_rest](https://github.com/disnet-project/pubmed_text_extraction_rest)
+  7. `mayoclinic_text_extraction_rest` -> [mayoclinic_text_extraction_api_rest](https://github.com/disnet-project/mayoclinic_text_extraction_rest)
   
   It is **important** to remember that you must compile and generate the `.jar` file of each of the previous Web services and copy them into their corresponding directories. Each `.jar` generated must be generically renamed as `app.jar` and then copied.
