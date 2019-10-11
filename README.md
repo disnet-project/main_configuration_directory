@@ -35,7 +35,7 @@ The directory is composed of the following essential elements:
 ## 3) dockerfile directory
   This directory contains the .jar of each of the Web applications that make up each Web service. It is necessary to have previously compiled and generated the .jar of each one of the Web applications that compose `DISNET`.
 
-  The list of Web services and their relationship with their directories contained in the dockerfile directory is as follows:
+  The list of Web services (`GitHub repository`) and their relationship with their directories within the `dockerfile directory` is as follows:
   
   1. `dsvp-rest` -> [data_storage_and_validation_procedure-api_rest](https://github.com/disnet-project/dsvp-rest)    
   2. `get_diseases_list_rest` -> [get_disease_list-api_rest](https://github.com/disnet-project/get_diseases_list_rest)
