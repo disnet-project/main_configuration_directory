@@ -70,12 +70,14 @@ If you want to terminate `DISNET`, you need to use the command docker-compose do
 
 >The criteria used for the selection of the sources of information in DISNET are: i) open access, ii) recognised quality and reliability, and iii) availability of substantial quantities of data (structured or not). This suggested to include the following two web sites in the system, which are described below: i) Wikipedia and ii) PubMed.
 
-1. Select source.
+### 1. Select source.
 
-2. Select the best method to obtain the relevant content.
+### 2. Select the best method to obtain the relevant content.
 
 > For example, to obtain the content of Wikipedia articles related to diseases, it has been decided to develop a Web crawler and DBpedia, but there are also other alternatives such as using the Wikipedia API or Wikidata.
 
-3. 
+### 3. 
 
-4.
+### 4.
+
+### 5.
