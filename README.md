@@ -82,7 +82,7 @@ The following image shows the technological architecture of the DISNET platform.
 
 ![Aquí la descripción de la imagen por si no carga](https://github.com/disnet-project/main_configuration_directory/blob/master/NEW%20DISNET%20STRUCTURE.png)
 
-DISNET's main Web service is in charge of controlling the request for the data that will be entered into the data set.
+DISNET's main Web service called in the previous image as DSVP, is in charge of controlling the request for the data that will be entered into the data set.
 
 In order for DISNET to enter data from a new source, this data must be structured as follows.
 
