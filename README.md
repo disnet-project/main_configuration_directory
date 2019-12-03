@@ -76,7 +76,11 @@ If you want to terminate `DISNET`, you need to use the command docker-compose do
 
 > For example, to obtain the content of Wikipedia articles related to diseases, it has been decided to develop a Web crawler and DBpedia, but there are also other alternatives such as using the Wikipedia API or Wikidata.
 
-### 3. 
+### 3. Structuring of data for reading by the system
+
+DISNET's main Web service is in charge of controlling the request for the data that will be entered into the data set.
+
+In order for DISNET to enter data from a new source, this data must be structured as follows.
 
 ### 4.
 
