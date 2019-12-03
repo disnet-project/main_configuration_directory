@@ -78,6 +78,8 @@ If you want to terminate `DISNET`, you need to use the command docker-compose do
 
 ### 3. Structuring of data for reading by the system
 
+The following image shows the technological architecture of the DISNET platform.
+
 DISNET's main Web service is in charge of controlling the request for the data that will be entered into the data set.
 
 In order for DISNET to enter data from a new source, this data must be structured as follows.
