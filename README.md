@@ -88,9 +88,11 @@ This scheme has the purpose of visualising in an organised way all the elements 
 
 --------------------------------------------------
 
-DISNET's main Web service called in the previous image as DSVP, is in charge of controlling the request for the data that will be entered into the data set.
+Therefore, to connect the Web service that populates the dataset with information from several sources, it is necessary to create a JSON file with a specific structure. In DISNET two kind of structures are used, the first one (E1), refers to the sources that have documents that talk about a single disease, this is the case of Wikipedia, in which a single article refers to a single disease; the second kind of structure (E2), refers to those sources in which many documents talk about a single disease, this is the case of PubMed. 
 
-In order for DISNET to enter data from a new source, this data must be structured as follows.
+Below is a diagram of classes referring to the first type of structure (E1), this structure of classes allows to generate the JSON necessary for the main service of DISNET to read it and later include its information contained in the data set of DISNET.
+
+Now, the following image shows the class diagram that allows you to generate the JSON referring to the structure type (E2).
 
 ### 4.
 
