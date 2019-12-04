@@ -80,7 +80,13 @@ If you want to terminate `DISNET`, you need to use the command docker-compose do
 
 The following image shows the technological architecture of the DISNET platform.
 
-![Aquí la descripción de la imagen por si no carga](https://github.com/disnet-project/main_configuration_directory/blob/master/NEW%20DISNET%20STRUCTURE.png)
+![Architecture of the DISNET platform](https://github.com/disnet-project/main_configuration_directory/blob/master/NEW%20DISNET%20STRUCTURE.png)
+
+The previous image shows that DISNET is composed of a set of Web services. In the area called "Extraction Text Procedures", you can see all those Web services in order to mine the different relevant sources, according to the selection criteria previously described. 
+
+This scheme has the purpose of visualising in an organised way all the elements that make up the DISNET system.
+
+--------------------------------------------------
 
 DISNET's main Web service called in the previous image as DSVP, is in charge of controlling the request for the data that will be entered into the data set.
 
