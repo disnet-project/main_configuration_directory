@@ -92,7 +92,11 @@ Therefore, to connect the Web service that populates the dataset with informatio
 
 Below is a diagram of classes referring to the first type of structure (E1), this structure of classes allows to generate the JSON necessary for the main service of DISNET to read it and later include its information contained in the data set of DISNET.
 
+![One to one JSON structure](https://github.com/disnet-project/main_configuration_directory/blob/master/document_structure_E1.png)
+
 Now, the following image shows the class diagram that allows you to generate the JSON referring to the structure type (E2).
+
+![Many to one JSON structure](https://github.com/disnet-project/main_configuration_directory/blob/master/document_structure_E2.png)
 
 ### 4.
 
