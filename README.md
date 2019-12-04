@@ -92,12 +92,16 @@ Therefore, to connect the Web service that populates the dataset with informatio
 
 Below is a diagram of classes referring to the first type of structure (E1), this structure of classes allows to generate the JSON necessary for the main service of DISNET to read it and later include its information contained in the data set of DISNET.
 
-![One to one JSON structure](https://github.com/disnet-project/main_configuration_directory/blob/master/document_structure_E1.png)
+![One-to-on JSON structure](https://github.com/disnet-project/main_configuration_directory/blob/master/document_structure_E1.png)
 
 Now, the following image shows the class diagram that allows you to generate the JSON referring to the structure type (E2).
 
-![Many to one JSON structure](https://github.com/disnet-project/main_configuration_directory/blob/master/document_structure_E2.png)
+![One-to-many JSON structure](https://github.com/disnet-project/main_configuration_directory/blob/master/document_structure_E2.png)
 
-### 4.
+### 4. Relevant elements to be mined.
 
-### 5.
+The structures shown in the previous images provide a reference to know which are the relevant elements to mine.
+
+For one-to-one sources, it is necessary to retrieve from the articles: the name of the article, its sections, the texts of the sections (which can be paragraphs, lists or tables), references, disease codes from sources of information external to Wikipedia, and information from the infobox located at the beginning of the document.
+
+For one-to-many sources, it is necessary to retrieve: summaries of the most relevant articles to the medical term associated with a disease, a disease in this case are MeSH terms, the synonyms of MeSH terms are also retrieved.
